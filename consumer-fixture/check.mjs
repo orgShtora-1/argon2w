@@ -1,8 +1,8 @@
-import { hash, verify } from "@hallaxius/argon2w";
+import { hash, verify } from "@shtora/argon2w";
 
 for (const specifier of [
-  "@hallaxius/argon2w/wasm",
-  "@hallaxius/argon2w/dist/argon2w.wasm",
+  "@shtora/argon2w/wasm",
+  "@shtora/argon2w/dist/argon2w.wasm",
 ]) {
   if (!import.meta.resolve(specifier).endsWith("/dist/argon2w.wasm")) {
     throw new Error(`Wasm subpath resolution failed: ${specifier}`);

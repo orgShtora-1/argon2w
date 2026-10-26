@@ -15,7 +15,7 @@ echo "--- packed wasm matches the committed artifact ---"
 sha256sum dist/argon2w.wasm /repo/src/argon2w.wasm
 cmp dist/argon2w.wasm /repo/src/argon2w.wasm
 echo "packed wasm: byte-identical to src/argon2w.wasm"
-set -- hallaxius-argon2w-*.tgz
+set -- shtora-argon2w-*.tgz
 if [ ! -f "$1" ] || [ "$#" -ne 1 ]; then
   echo "FAIL: expected exactly one argon2w tarball, found $#"
   exit 1
@@ -61,7 +61,7 @@ echo "--- offline install in a clean fixture ---"
 cp /repo/consumer-fixture/check.mjs /repo/consumer-fixture/check-types.mts \
    /repo/consumer-fixture/tsconfig.json /repo/consumer-fixture/wrangler.toml \
    /repo/consumer-fixture/worker.mjs "${WORK}/fixture/"
-printf '{"name":"argon2w-consumer-check","version":"1.0.0","type":"module","dependencies":{"@hallaxius/argon2w":"file:%s/%s"}}' \
+printf '{"name":"argon2w-consumer-check","version":"1.0.0","type":"module","dependencies":{"@shtora/argon2w":"file:%s/%s"}}' \
   "${WORK}/pkg" "${TARBALL}" > "${WORK}/fixture/package.json"
 cd "${WORK}/fixture"
 bun install --offline

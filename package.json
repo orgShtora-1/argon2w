@@ -1,6 +1,6 @@
 {
-  "name": "@hallaxius/argon2w",
-  "version": "0.0.2",
+  "name": "@shtora/argon2w",
+  "version": "0.1.0",
   "description": "Argon2id password hashing for Cloudflare Workers and Node.js, built on the PHC reference implementation compiled to standalone SIMD WebAssembly.",
   "type": "module",
   "main": "./dist/index.js",
@@ -26,6 +26,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json && bun scripts/copy-wasm.ts",
     "prepack": "bun run build",
+    "prepublishOnly": "bun run test && bun run typecheck",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
   },
@@ -45,11 +46,11 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hallaxius/argon2w.git"
+    "url": "git+https://github.com/orgShtora-1/argon2w.git"
   },
-  "homepage": "https://github.com/Hallaxius/argon2w#readme",
+  "homepage": "https://github.com/orgShtora-1/argon2w#readme",
   "bugs": {
-    "url": "https://github.com/Hallaxius/argon2w/issues"
+    "url": "https://github.com/orgShtora-1/argon2w/issues"
   },
   "engines": {
     "node": ">=24"

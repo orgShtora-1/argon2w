@@ -1,8 +1,8 @@
 # argon2w
 
-[![npm version](https://img.shields.io/npm/v/%40hallaxius%2Fargon2w?label=npm)](https://www.npmjs.com/package/@hallaxius/argon2w)
-[![CI](https://img.shields.io/github/actions/workflow/status/Hallaxius/argon2w/ci.yaml?branch=main&label=CI)](https://github.com/Hallaxius/argon2w/actions/workflows/ci.yaml)
-[![Apache-2.0 license](https://img.shields.io/github/license/Hallaxius/argon2w)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/%40shtora%2Fargon2w?label=npm)](https://www.npmjs.com/package/@shtora/argon2w)
+[![CI](https://img.shields.io/github/actions/workflow/status/orgShtora-1/argon2w/ci.yaml?branch=main&label=CI)](https://github.com/orgShtora-1/argon2w/actions/workflows/ci.yaml)
+[![Apache-2.0 license](https://img.shields.io/github/license/orgShtora-1/argon2w)](LICENSE)
 
 Argon2id password hashing for **Cloudflare Workers and Node.js**. Built on the PHC Argon2 reference implementation compiled to a standalone SIMD WebAssembly module, argon2w returns standard PHC strings for storage and verifies them without a native addon.
 
@@ -16,10 +16,10 @@ Argon2id password hashing for **Cloudflare Workers and Node.js**. Built on the P
 ## Install
 
 ```sh
-npm install @hallaxius/argon2w
-# or: pnpm add @hallaxius/argon2w
-# or: yarn add @hallaxius/argon2w
-# or: bun add @hallaxius/argon2w
+npm install @shtora/argon2w
+# or: pnpm add @shtora/argon2w
+# or: yarn add @shtora/argon2w
+# or: bun add @shtora/argon2w
 ```
 
 The package is ESM-only; there is no CommonJS build, so use `import` or a dynamic `import()` from CommonJS code.
@@ -27,7 +27,7 @@ The package is ESM-only; there is no CommonJS build, so use `import` or a dynami
 ## Hash and verify
 
 ```js
-import { hash, verify } from "@hallaxius/argon2w";
+import { hash, verify } from "@shtora/argon2w";
 
 const encoded = await hash("correct horse battery staple", { profile: "standard" });
 
@@ -50,7 +50,7 @@ Node.js 24 or newer loads the packaged `.wasm` asset automatically. The `hash()`
 Pick a named profile instead of remembering the numbers:
 
 ```js
-import { createProfile, hash, profiles } from "@hallaxius/argon2w";
+import { createProfile, hash, profiles } from "@shtora/argon2w";
 
 const encoded = await hash("password", { profile: "m16t2" });
 const available = Object.keys(profiles);
@@ -78,7 +78,7 @@ Names describe costs. They are not a security certification or a CPU-time guaran
 ## Rehash policy
 
 ```js
-import { assessRehash, needsRehash, verify } from "@hallaxius/argon2w";
+import { assessRehash, needsRehash, verify } from "@shtora/argon2w";
 
 const ok = await verify(encoded, password);
 if (ok && needsRehash(encoded, { memoryCost: 19456, timeCost: 3, parallelism: 1 })) {
@@ -97,8 +97,8 @@ const assessment = assessRehash(encoded, "standard");
 Import the public Wasm subpath and configure it once at startup. The subpath resolves to a `WebAssembly.Module`:
 
 ```js
-import argon2Wasm from "@hallaxius/argon2w/wasm";
-import { configureWasm, hash, verify } from "@hallaxius/argon2w";
+import argon2Wasm from "@shtora/argon2w/wasm";
+import { configureWasm, hash, verify } from "@shtora/argon2w";
 
 configureWasm(argon2Wasm);
 
@@ -119,9 +119,9 @@ globs = ["**/*.wasm"]
 fallthrough = true
 ```
 
-The previous `@hallaxius/argon2w/dist/argon2w.wasm` path remains available as a compatibility alias; new code should use `/wasm` instead of depending on the package's internal `dist` layout.
+The previous `@shtora/argon2w/dist/argon2w.wasm` path remains available as a compatibility alias; new code should use `/wasm` instead of depending on the package's internal `dist` layout.
 
-The package includes a TypeScript declaration for `@hallaxius/argon2w/wasm`, so no project-local module declaration is needed with a resolver that honors package `exports`. Wrangler resolves the `workerd` export to a small wrapper that imports the Wasm asset relatively.
+The package includes a TypeScript declaration for `@shtora/argon2w/wasm`, so no project-local module declaration is needed with a resolver that honors package `exports`. Wrangler resolves the `workerd` export to a small wrapper that imports the Wasm asset relatively.
 
 Hash when setting a password and verify a *stored* PHC string when authenticating. Do not hash on every request.
 
@@ -196,6 +196,6 @@ The exported `MIN_*` / `MAX_*` constants describe the JavaScript boundaries. The
 
 ## Reporting issues
 
-Use [Discussions](https://github.com/Hallaxius/argon2w/discussions) for questions and deployment guidance. Use [Issues](https://github.com/Hallaxius/argon2w/issues) for reproducible failures; include your runtime, the parameters you used, and a minimal test case — without real passwords or stored PHC strings.
+Use [Discussions](https://github.com/orgShtora-1/argon2w/discussions) for questions and deployment guidance. Use [Issues](https://github.com/orgShtora-1/argon2w/issues) for reproducible failures; include your runtime, the parameters you used, and a minimal test case — without real passwords or stored PHC strings.
 
 For contribution setup and local checks, see [CONTRIBUTING.md](CONTRIBUTING.md). To report a security vulnerability, follow [SECURITY.md](SECURITY.md) rather than opening a public issue.
