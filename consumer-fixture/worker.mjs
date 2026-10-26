@@ -1,4 +1,4 @@
-import wasmModule from "@hallaxius/argon2w/wasm";
+import wasmModule from "@shtora/argon2w/wasm";
 import {
   assessRehash,
   bytesToHex,
@@ -9,7 +9,7 @@ import {
   needsRehash,
   profiles,
   verify,
-} from "@hallaxius/argon2w";
+} from "@shtora/argon2w";
 
 configureWasm(wasmModule);
 

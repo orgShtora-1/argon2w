@@ -1,5 +1,5 @@
-import { assessRehash, createProfile, hash, hashRaw, needsRehash, profiles, verify } from "@hallaxius/argon2w";
-import type wasmModule from "@hallaxius/argon2w/wasm";
+import { assessRehash, createProfile, hash, hashRaw, needsRehash, profiles, verify } from "@shtora/argon2w";
+import type wasmModule from "@shtora/argon2w/wasm";
 
 const wasmTypeCheck: typeof wasmModule | undefined = undefined;
 

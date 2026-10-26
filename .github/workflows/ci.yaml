@@ -51,7 +51,7 @@ jobs:
           npm init --yes
           npm install --no-audit --no-fund "$GITHUB_WORKSPACE"/*.tgz
           node --input-type=module <<'NODE'
-          import { hash, verify } from "@hallaxius/argon2w";
+          import { hash, verify } from "@shtora/argon2w";
 
           const password = "node-consumer-smoke";
           const encoded = await hash(password, { profile: "experimental" });

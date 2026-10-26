@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping improve argon2w. For usage questions, start a thread in [GitHub Discussions](https://github.com/Hallaxius/argon2w/discussions). Use the issue forms for reproducible bugs and feature requests.
+Thanks for helping improve argon2w. For usage questions, start a thread in [GitHub Discussions](https://github.com/orgShtora-1/argon2w/discussions). Use the issue forms for reproducible bugs and feature requests.
 
 ## Local development
 
